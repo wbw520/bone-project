@@ -260,7 +260,7 @@ lr_config = dict(
 cfg.total_epochs = 40
 
 # set batch size
-cfg.data.samples_per_gpu = 1
+cfg.data.samples_per_gpu = 32
 cfg.data.val_dataloader = dict(samples_per_gpu=1)
 cfg.data.test_dataloader = dict(samples_per_gpu=1)
 

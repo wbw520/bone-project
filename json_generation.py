@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import cv2
+from sklearn.model_selection import train_test_split
 
 
 def read_csv(root):
@@ -49,20 +50,11 @@ def make_json(data, mode):
         json_file.write(json_str)
 
 
-split = [[0], [1, 2], [3, 4], [5], [6], [7, 8], [9], [10], [11], [12, 13]]
-index_ = 0
-
 img_dir = "data/NECK/images/"
 point_data = list(read_csv("annotation.csv"))
 
-select = split[index_]
-val_list = []
-for i in range(len(select)):
-    id = select[i] - i
-    out = point_data.pop(id)
-    val_list.append(out)
-print(val_list)
+train, val = train_test_split(point_data, train_size=0.8, random_state=1)
+make_json(train, "train")
+make_json(val, "val")
 
-make_json(point_data, "train")
-make_json(val_list, "val")
 

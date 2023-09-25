@@ -3,9 +3,20 @@
 ## Usage
 
 #### Environment
-Please first make the environment following the MMpose [instruction](https://mmpose.readthedocs.io/en/latest/installation.html).
-After that install the following package:
+Please first make the environment following the instruction:
 ```
+conda create --name neck_RA python=3.8 -y
+conda activate neck_RA
+
+pip install --upgrade numpy==1.24.3
+pip install -q torch==1.13.1+cu117 torchvision==0.14.1+cu117 torchaudio==0.13.1 --extra-index-url https://download.pytorch.org/whl/cu117
+pip install -U -q openmim
+mim install -q mmengine
+mim install -q "mmcv==1.7.0"
+
+cd dir [root under this project]
+pip install -q -r requirements.txt
+pip install -q -e . 
 pip install opencv-python
 pip install pandas
 pip install matplotlib
@@ -15,9 +26,7 @@ pip install matplotlib
 All setting can be modified in file json_generation.py.  
 A json file need to be pre-made for training from a csv file and image folder.  
 csv file: refer to annotation.csv.  
-Image folder: should with images in the direction "data/NECK/images/neck" + str(pic_id) + ".jpg"  
-We also manually set the cross-validation (see "split" in line 52, we currently set 10 folds.)  
-"index" in line 53 can set one fold for validation and others for training (default as 0, use first folder).  
+Image folder: should with images in the direction "your_dir/neck" + str(pic_id) + ".jpg"
 After setting, generate the json file by running command:
 ```
 python json_generation.py
