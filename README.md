@@ -26,7 +26,7 @@ pip install matplotlib
 All setting can be modified in file json_generation.py.  
 A json file need to be pre-made for training from a csv file and image folder.  
 csv file: refer to annotation.csv.  
-Image folder: should with images in the direction "your_dir/neck" + str(pic_id) + ".jpg"
+Image folder: should with images in the direction "data/NECK/neck" + str(pic_id) + ".jpg"
 After setting, generate the json file by running command:
 ```
 python json_generation.py
