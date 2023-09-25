@@ -149,7 +149,7 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 
         return name_value
 
-    def _report_metric(self, res_file, metrics, pck_thr=0.3):
+    def _report_metric(self, res_file, metrics, pck_thr=0.5):
         """Keypoint evaluation.
 
         Args:
@@ -184,6 +184,8 @@ class TopDownCOCOTinyDataset(Kpt2dSviewRgbImgTopDownDataset):
 
         if 'PCK' in metrics:
             acc, pck, _ = keypoint_pck_accuracy(outputs, gts, masks, pck_thr, normalize_factor)
+            # print("*************")
+            # print(pck)
             info_str.append(('PCK', pck))
 
         if 'NME' in metrics:
@@ -260,7 +262,7 @@ lr_config = dict(
 cfg.total_epochs = 40
 
 # set batch size
-cfg.data.samples_per_gpu = 32
+cfg.data.samples_per_gpu = 1
 cfg.data.val_dataloader = dict(samples_per_gpu=1)
 cfg.data.test_dataloader = dict(samples_per_gpu=1)
 

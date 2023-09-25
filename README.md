@@ -21,6 +21,7 @@ pip install -q -e .
 pip install opencv-python
 pip install pandas
 pip install matplotlib
+pip install -U scikit-learn
 ```
 
 #### Data Preparation
