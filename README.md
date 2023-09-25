@@ -1,4 +1,4 @@
-# Bone Project
+# neck_RA
 Our project is built on MMpose .
 
 ## Usage
